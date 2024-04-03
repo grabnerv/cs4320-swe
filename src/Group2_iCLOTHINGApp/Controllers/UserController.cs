@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Group2_iCLOTHINGApp.Controllers
 {
-    public class HomeController : Controller
+    public class UserController : Controller
     {
         public ActionResult Index()
         {
