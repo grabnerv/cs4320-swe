@@ -661,7 +661,7 @@
           <End Role="Department" Type="Self.Department" Multiplicity="*" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="Group2_iCLOTHINGDBEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Group2_iCLOTHINGDBEntities5" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AboutUs" EntityType="Self.AboutUs" />
           <EntitySet Name="Administrator" EntityType="Self.Administrator" />
           <EntitySet Name="Brand" EntityType="Self.Brand" />
@@ -727,7 +727,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Group2_iCLOTHINGDBModelStoreContainer" CdmEntityContainer="Group2_iCLOTHINGDBEntities3">
+        <EntityContainerMapping StorageEntityContainer="Group2_iCLOTHINGDBModelStoreContainer" CdmEntityContainer="Group2_iCLOTHINGDBEntities5">
           <EntitySetMapping Name="AboutUs">
             <EntityTypeMapping TypeName="Group2_iCLOTHINGDBModel.AboutUs">
               <MappingFragment StoreEntitySet="AboutUs">

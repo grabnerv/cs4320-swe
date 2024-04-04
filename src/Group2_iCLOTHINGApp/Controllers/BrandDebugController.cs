@@ -10,107 +10,107 @@ using Group2_iCLOTHINGApp.Models;
 
 namespace Group2_iCLOTHINGApp.Controllers
 {
-    public class CategoryDebugController : Controller
+    public class BrandDebugController : Controller
     {
-        private Group2_iCLOTHINGDBEntities3 db = new Group2_iCLOTHINGDBEntities3();
+        private Group2_iCLOTHINGDBEntities5 db = new Group2_iCLOTHINGDBEntities5();
 
-        // GET: CategoryDebug
+        // GET: BrandDebug
         public ActionResult Index()
         {
-            return View(db.Category.ToList());
+            return View(db.Brand.ToList());
         }
 
-        // GET: CategoryDebug/Details/5
+        // GET: BrandDebug/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Category.Find(id);
-            if (category == null)
+            Brand brand = db.Brand.Find(id);
+            if (brand == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(brand);
         }
 
-        // GET: CategoryDebug/Create
+        // GET: BrandDebug/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CategoryDebug/Create
+        // POST: BrandDebug/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "categoryID,categoryName,categoryDescription")] Category category)
+        public ActionResult Create([Bind(Include = "brandId,brandName,drandDescription")] Brand brand)
         {
             if (ModelState.IsValid)
             {
-                db.Category.Add(category);
+                db.Brand.Add(brand);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            return View(brand);
         }
 
-        // GET: CategoryDebug/Edit/5
+        // GET: BrandDebug/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Category.Find(id);
-            if (category == null)
+            Brand brand = db.Brand.Find(id);
+            if (brand == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(brand);
         }
 
-        // POST: CategoryDebug/Edit/5
+        // POST: BrandDebug/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "categoryID,categoryName,categoryDescription")] Category category)
+        public ActionResult Edit([Bind(Include = "brandId,brandName,drandDescription")] Brand brand)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = EntityState.Modified;
+                db.Entry(brand).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(category);
+            return View(brand);
         }
 
-        // GET: CategoryDebug/Delete/5
+        // GET: BrandDebug/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Category.Find(id);
-            if (category == null)
+            Brand brand = db.Brand.Find(id);
+            if (brand == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(brand);
         }
 
-        // POST: CategoryDebug/Delete/5
+        // POST: BrandDebug/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Category.Find(id);
-            db.Category.Remove(category);
+            Brand brand = db.Brand.Find(id);
+            db.Brand.Remove(brand);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
