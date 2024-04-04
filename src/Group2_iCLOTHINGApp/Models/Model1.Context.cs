@@ -13,10 +13,10 @@ namespace Group2_iCLOTHINGApp.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Group2_iCLOTHINGDBEntities : DbContext
+    public partial class Group2_iCLOTHINGDBEntities3 : DbContext
     {
-        public Group2_iCLOTHINGDBEntities()
-            : base("name=Group2_iCLOTHINGDBEntities")
+        public Group2_iCLOTHINGDBEntities3()
+            : base("name=Group2_iCLOTHINGDBEntities3")
         {
         }
     

@@ -4,33 +4,33 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1c7ff14b1bd749eca442ddcb9c7e15fc" Name="Diagram1">
-        <EntityTypeShape EntityType="DBModel.AboutUs" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Administrator" Width="1.5" PointX="3.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Brand" Width="1.5" PointX="10.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Category" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Customer" Width="1.5" PointX="3.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Department" Width="1.5" PointX="10.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Email" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.ItemDeliery" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.OrderStatus" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Product" Width="1.5" PointX="13" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.ShoppingCart" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.UserAccessLevel" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.UserComments" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.UserPassword" Width="1.5" PointX="8.25" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.UserQuery" Width="1.5" PointX="8.25" PointY="12.875" IsExpanded="true" />
-        <AssociationConnector Association="DBModel.FK__UserAcces__userI__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK__Product__brandID__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK__UserAcces__userI__3F466844" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK__Email__userID__5441852A" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK__ItemDelie__cartI__571DF1D5" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK__OrderStat__cartI__59FA5E80" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK__UserComme__userI__5EBF139D" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK__UserPassw__userI__619B8048" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK__UserQuery__userI__6477ECF3" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.Carts" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.DepartmentProducts" ManuallyRouted="false" />
+      <Diagram DiagramId="eda64768886646b1bee920d964aa8964" Name="Diagram1">
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.AboutUs" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Administrator" Width="1.5" PointX="3.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Brand" Width="1.5" PointX="10.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Category" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Customer" Width="1.5" PointX="3.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Department" Width="1.5" PointX="10.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Email" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.ItemDeliery" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.OrderStatus" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Product" Width="1.5" PointX="13" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.ShoppingCart" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.UserAccessLevel" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.UserComments" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.UserPassword" Width="1.5" PointX="8.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.UserQuery" Width="1.5" PointX="8.25" PointY="12.625" IsExpanded="true" />
+        <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK__UserAcces__userI__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK__Product__brandID__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK__UserAcces__userI__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK__Email__userID__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK__ItemDelie__cartI__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK__OrderStat__cartI__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK__UserComme__userI__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK__UserPassw__userI__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK__UserQuery__userI__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="Group2_iCLOTHINGDBModel.Carts" ManuallyRouted="false" />
+        <AssociationConnector Association="Group2_iCLOTHINGDBModel.DepartmentProducts" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

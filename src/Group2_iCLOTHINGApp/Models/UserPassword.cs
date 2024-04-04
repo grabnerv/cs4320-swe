@@ -15,7 +15,6 @@ namespace Group2_iCLOTHINGApp.Models
     public partial class UserPassword
     {
         public int userID { get; set; }
-        public string userAccountName { get; set; }
         public string userEncryptedPassword { get; set; }
         public Nullable<System.DateTime> passwordExpiryDate { get; set; }
         public Nullable<System.DateTime> userAccountExpiryDate { get; set; }
