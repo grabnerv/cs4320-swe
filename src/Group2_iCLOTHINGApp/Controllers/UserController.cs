@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -24,6 +25,11 @@ namespace Group2_iCLOTHINGApp.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+        public ActionResult CustomerRegistrationForm()
+        {
+            ViewBag.Message = "New customer registration: ";
             return View();
         }
     }

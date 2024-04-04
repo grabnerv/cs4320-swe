@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "CustomerRegistrationForm";
+}
+
+<h2>CustomerRegistrationForm</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>Registration Form</h4>
+    </div>
+   
+    <body>
+        <form action="#" method="post">
+            <div>
+                <label for="name">Name: </label>
+                <input type="text" id="name" name="name" required />
+            </div>
+            <div>
+                <label for="shippingAddress">Shipping Address: </label>
+                <input type="text" id="shippingAddress" name="shippingAddress" required />
+            </div>
+            <div>
+                <label for="email">Email: </label>
+                <input type="email" id="email" name="email" required />
+            </div>
+            <div>
+                <label for="password">Password: </label>
+                <input type="password" id="password" name="password" required />
+                <button type="submit">Submit registration</button>
+            </div>
+        </form>
+    </body>
+}
+

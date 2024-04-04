@@ -270,6 +270,7 @@
     <Content Include="Views\BrandDebug\Details.cshtml" />
     <Content Include="Views\BrandDebug\Edit.cshtml" />
     <Content Include="Views\BrandDebug\Index.cshtml" />
+    <Content Include="Views\User\CustomerRegistrationForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
