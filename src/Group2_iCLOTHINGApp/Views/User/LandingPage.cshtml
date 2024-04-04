@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "LandingPage";
+}
+
+<h2>iClothing</h2>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width", initial-scale="1.0" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 30px;
+            margin:10px;
+            text-align: center;
+            border: 2px solid #007a33;
+            color: #007a33;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .button-hover {
+            background-color: #007a33;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <a href="@Url.Action("CustomerRegistrationForm", "User")" class="button">User Query</a>
+    </div>
+</body>
+</html>

@@ -272,6 +272,7 @@
     <Content Include="Views\BrandDebug\Index.cshtml" />
     <Content Include="Views\User\CustomerRegistrationForm.cshtml" />
     <Content Include="Views\User\UserQueryForm.cshtml" />
+    <Content Include="Views\User\LandingPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

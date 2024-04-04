@@ -5,3 +5,20 @@
 
 <h2>UserQueryForm</h2>
 
+ @using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>User Query Form</h4>
+    </div>
+    <body>
+        <form action="#" method="post">
+            <div>
+                <label for="name">Name: </label>
+                <input type="text" id="name" name="name" required />
+            </div>
+            <div>
+                <button type="submit">Submit query</button>
+            </div>
+        </form>
+    </body>
+}

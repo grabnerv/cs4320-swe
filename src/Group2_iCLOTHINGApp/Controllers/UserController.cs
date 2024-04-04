@@ -37,5 +37,10 @@ namespace Group2_iCLOTHINGApp.Controllers
             ViewBag.Message = "User form submission page.";
             return View();
         }
+        public ActionResult LandingPage()
+        {
+            ViewBag.Message = "User landing page.";
+            return View();
+        }
     }
 }
