@@ -29,7 +29,12 @@ namespace Group2_iCLOTHINGApp.Controllers
         }
         public ActionResult CustomerRegistrationForm()
         {
-            ViewBag.Message = "New customer registration: ";
+            ViewBag.Message = "New customer registration page.";
+            return View();
+        }
+        public ActionResult UserQueryForm()
+        {
+            ViewBag.Message = "User form submission page.";
             return View();
         }
     }
