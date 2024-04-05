@@ -37,6 +37,7 @@ namespace Group2_iCLOTHINGApp.Controllers
 
         public ActionResult Index()
         {
+            var p = new Product();
             return RedirectToAction("LandingPage");
         }
 

@@ -9,6 +9,8 @@ namespace Group2_iCLOTHINGApp.Controllers
 {
     public class ProductListWindowController : Controller
     {
+        private Group2_iCLOTHINGDBEntities5 db = new Group2_iCLOTHINGDBEntities5();
+
         // GET: ProductListWindow
         public ActionResult Index()
         {
@@ -49,26 +51,27 @@ namespace Group2_iCLOTHINGApp.Controllers
 
         private List<Department> GetDepartments()
         {
-            List<Department> departments = new List<Department> {
-                new Department
-                {
-                    departmentDescription = "Department 1 description",
-                    departmentID = 1,
-                    departmentName = "Department 1"
-                },
-                new Department
-                {
-                    departmentDescription = "Department 2 description",
-                    departmentID = 2,
-                    departmentName = "Department 2"
-                },
-                new Department
-                {
-                    departmentDescription = "Department 3 description",
-                    departmentID = 3,
-                    departmentName = "Department 3"
-                }
-            };
+            List<Department> departments = db.Department.ToList();
+            //List<Department> departments = new List<Department> {
+            //    new Department
+            //    {
+            //        departmentDescription = "Department 1 description",
+            //        departmentID = 1,
+            //        departmentName = "Department 1"
+            //    },
+            //    new Department
+            //    {
+            //        departmentDescription = "Department 2 description",
+            //        departmentID = 2,
+            //        departmentName = "Department 2"
+            //    },
+            //    new Department
+            //    {
+            //        departmentDescription = "Department 3 description",
+            //        departmentID = 3,
+            //        departmentName = "Department 3"
+            //    }
+            //};
             return departments;
         }
         private List<Brand> GetBrands()

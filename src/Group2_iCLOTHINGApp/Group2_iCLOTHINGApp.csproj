@@ -131,6 +131,7 @@
     <Compile Include="Controllers\AdministratorDebugController.cs" />
     <Compile Include="Controllers\BrandDebugController.cs" />
     <Compile Include="Controllers\CustomerDebugController.cs" />
+    <Compile Include="Controllers\DepartmentDbgController.cs" />
     <Compile Include="Controllers\UserAccessLevelDbgController.cs" />
     <Compile Include="Controllers\ProductListWindowController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -297,6 +298,11 @@
     <Content Include="Views\ProductListWindow\DepartmentDetails.cshtml" />
     <Content Include="Views\ProductListWindow\CategoryDetails.cshtml" />
     <Content Include="Views\ProductListWindow\BrandDetails.cshtml" />
+    <Content Include="Views\DepartmentDbg\Create.cshtml" />
+    <Content Include="Views\DepartmentDbg\Delete.cshtml" />
+    <Content Include="Views\DepartmentDbg\Details.cshtml" />
+    <Content Include="Views\DepartmentDbg\Edit.cshtml" />
+    <Content Include="Views\DepartmentDbg\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
