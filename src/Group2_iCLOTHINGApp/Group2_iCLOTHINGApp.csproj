@@ -128,7 +128,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdministratorDebugController.cs" />
     <Compile Include="Controllers\BrandDebugController.cs" />
+    <Compile Include="Controllers\CustomerDebugController.cs" />
+    <Compile Include="Controllers\UserAccessLevelDbgController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -274,6 +277,21 @@
     <Content Include="Views\User\UserQueryForm.cshtml" />
     <Content Include="Views\User\LandingPage.cshtml" />
     <Content Include="Views\User\AboutUsInformationWindow.cshtml" />
+    <Content Include="Views\CustomerDebug\Create.cshtml" />
+    <Content Include="Views\CustomerDebug\Delete.cshtml" />
+    <Content Include="Views\CustomerDebug\Details.cshtml" />
+    <Content Include="Views\CustomerDebug\Edit.cshtml" />
+    <Content Include="Views\CustomerDebug\Index.cshtml" />
+    <Content Include="Views\AdministratorDebug\Create.cshtml" />
+    <Content Include="Views\AdministratorDebug\Delete.cshtml" />
+    <Content Include="Views\AdministratorDebug\Details.cshtml" />
+    <Content Include="Views\AdministratorDebug\Edit.cshtml" />
+    <Content Include="Views\AdministratorDebug\Index.cshtml" />
+    <Content Include="Views\UserAccessLevelDbg\Create.cshtml" />
+    <Content Include="Views\UserAccessLevelDbg\Delete.cshtml" />
+    <Content Include="Views\UserAccessLevelDbg\Details.cshtml" />
+    <Content Include="Views\UserAccessLevelDbg\Edit.cshtml" />
+    <Content Include="Views\UserAccessLevelDbg\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
