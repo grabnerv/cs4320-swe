@@ -1,0 +1,58 @@
+﻿@model Group2_iCLOTHINGApp.Models.UserAccessLevel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UserAccessLevel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.userAccess)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userAccess)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Administrator.adminName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Administrator.adminName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.customerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.customerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPassword.userEncryptedPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPassword.userEncryptedPassword)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.userID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
