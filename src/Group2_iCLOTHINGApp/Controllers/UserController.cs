@@ -235,7 +235,7 @@ namespace Group2_iCLOTHINGApp.Controllers
 
                 var maybeUserID = db.Database.SqlQuery<int?>("SELECT userID FROM Customer WHERE customerName = @p0", username).ToList();
                 int userID;
-                if (maybeUserID[0] == null)
+                if (maybeUserID.Count == 0 || maybeUserID[0] == null)
                 {
                     // error
                     return View();

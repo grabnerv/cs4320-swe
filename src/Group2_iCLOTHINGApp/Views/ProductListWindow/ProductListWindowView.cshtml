@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Group2_iCLOTHINGApp.Models.Product>
 @{
     ViewBag.Title = "Product List Window View";
 }
@@ -9,8 +9,49 @@
 <head>
     <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
     <title>Product list</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            border: 2px solid #808080
+            text-align: left;
+        }
+        th {
+            background-color: #b200ff
+        }
+    </style>
 </head>
 <body>
+    <h1>Product List</h1>
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Brand</th>
+            <th>Department</th>
+        </tr>
+        @foreach (var product in ViewBag.productList)
+            {
+                <tr>
+                    <td>@product.productName</td>
+                    <td>@product.Brand.brandName</td>
+                    <td>@(string.Join(", ", product.Department))</td>
+                </tr>
+            }
+    </table>
+
+
+
+     
+
+
+
+
+
+
+
     <h1>Departments</h1>
     <ul>
         @foreach (var department in ViewBag.departmentList)
