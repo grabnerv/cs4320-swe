@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "UserQueryForm";
+}
+
+<h2>User Comment Form</h2>
+
+@using (Html.BeginForm())
+{
+    <body>
+        <form action="#" method="post">
+            <div>
+                <label for="name">Name: </label>
+                <input type="text" id="name" name="name" required />
+            </div>
+            <div>
+                <button type="submit">Submit query</button>
+            </div>
+        </form>
+    </body>
+}

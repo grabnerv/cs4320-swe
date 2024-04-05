@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Customer Login";
+}
+
+<h2>Customer Login Form</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal"> 
+    </div>
+    <style>
+        .button {
+            display: inline-block;
+            padding: 10px 30px;
+            margin: 10px;
+            text-align: center;
+            border: 2px solid #007a33;
+            color: #007a33;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .button-hover {
+            background-color: #007a33;
+            color: #fff;
+        }
+    </style>
+
+    <body>
+        <form action="#" method="post">
+            <div>
+                <label for="name">Username</label>
+                <input type="text" id="username" name="username" required />
+            </div>
+            <div>
+                <label for="shippingAddress">Password</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <div>
+                <a class="button">Login</a>
+            </div>
+        </form>
+    </body>
+}
+
+

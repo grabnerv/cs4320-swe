@@ -61,5 +61,16 @@ namespace Group2_iCLOTHINGApp.Controllers
             };
             return aboutUsInfo;
         }
+        public ActionResult CustomerLoginForm()
+        {
+            ViewBag.Message = "Existing user login.";
+            return View();
+            //add authentication
+        }
+        public ActionResult UserCommentForm()
+        {
+            ViewBag.Message = "User comment form.";
+            return View();
+        }
     }
 }
