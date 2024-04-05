@@ -32,20 +32,17 @@ namespace Group2_iCLOTHINGApp.Controllers
 
         public ActionResult DepartmentDetails(int id)
         {
-            //for returning real data from database, search the database using
-            //department.id, since that is the primary key.
-            //same goes for Category and Brand.
-            Department d = new Department { departmentID = id, departmentDescription="Department description", departmentName="Department name" };
+            Department d = db.Department.Find(id);
             return View(d);
         }
         public ActionResult CategoryDetails(int id)
         {
-            Category c = new Category { categoryDescription = "Category description", categoryID = id, categoryName = "Category name" };            
+            Category c = db.Category.Find(id);
             return View(c);
         }
         public ActionResult BrandDetails(int id)
         {
-            Brand b = new Brand { drandDescription = "Brand description", brandId = id, brandName = "Brand name" };
+            Brand b = db.Brand.Find(id);
             return View(b);
         }
 
@@ -54,125 +51,21 @@ namespace Group2_iCLOTHINGApp.Controllers
         private List<Department> GetDepartments()
         {
             List<Department> departments = db.Department.ToList();
-            //List<Department> departments = new List<Department> {
-            //    new Department
-            //    {
-            //        departmentDescription = "Department 1 description",
-            //        departmentID = 1,
-            //        departmentName = "Department 1"
-            //    },
-            //    new Department
-            //    {
-            //        departmentDescription = "Department 2 description",
-            //        departmentID = 2,
-            //        departmentName = "Department 2"
-            //    },
-            //    new Department
-            //    {
-            //        departmentDescription = "Department 3 description",
-            //        departmentID = 3,
-            //        departmentName = "Department 3"
-            //    }
-            //};
             return departments;
         }
         private List<Brand> GetBrands()
         {
-            List<Brand> brands = new List<Brand> {
-                new Brand
-                {
-                    drandDescription = "Brand 1 description",
-                    brandId = 1,
-                    brandName = "Brand 1"
-                },
-                new Brand
-                {
-                    drandDescription = "Brand 2 description",
-                    brandId = 2,
-                    brandName = "Brand 2"
-                },
-                new Brand
-                {
-                    drandDescription = "Brand 3 description",
-                    brandId = 3,
-                    brandName = "Brand 3"
-                }
-            };
+            List<Brand> brands = db.Brand.ToList();
             return brands;
         }
         private List<Category> GetCategories()
         {
-            List<Category> categories = new List<Category> {
-                new Category
-                {
-                    categoryDescription = "Category 1 description",
-                    categoryID = 0,
-                    categoryName = "Category 1"
-                },
-                new Category
-                {
-                    categoryDescription = "Category 2 description",
-                    categoryID = 1,
-                    categoryName = "Category 2"
-                },
-                new Category
-                {
-                    categoryDescription = "Category 3 description",
-                    categoryID = 2,
-                    categoryName = "Category 3"
-                }
-            };
+            List<Category> categories = db.Category.ToList();
             return categories;
         }
         private List<Product> GetProducts()
         {
-            List<Product> products = new List<Product> {
-                new Product
-                {
-                    productID = 0,
-                    productName = "Shoes 1",
-                    productDescription = "these are some shoes",
-                    productPrice = 100,
-                    productQuantity = 67,
-                    brandID = 1
-                },
-                new Product
-                {
-                    productID = 2,
-                    productName = "Shoes 2",
-                    productDescription = "these are some shoes",
-                    productPrice = 100,
-                    productQuantity = 87,
-                    brandID = 1
-                },
-                new Product
-                {
-                    productID = 3,
-                    productName = "Shoes 3",
-                    productDescription = "these are some shoes",
-                    productPrice = 100,
-                    productQuantity = 84,
-                    brandID = 1
-                },
-                new Product
-                {
-                    productID = 4,
-                    productName = "Shirt 1",
-                    productDescription = "these are some shirt",
-                    productPrice = 100,
-                    productQuantity = 13,
-                    brandID = 2
-                },
-                new Product
-                {
-                    productID = 5,
-                    productName = "Shirt 2",
-                    productDescription = "these are some shirt",
-                    productPrice = 100,
-                    productQuantity = 42,
-                    brandID = 0
-                },
-            };
+            List<Product> products = db.Product.ToList();
             return products;
         }
     }

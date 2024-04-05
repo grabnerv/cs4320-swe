@@ -130,8 +130,11 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdministratorDebugController.cs" />
     <Compile Include="Controllers\BrandDebugController.cs" />
+    <Compile Include="Controllers\CategoryDbgController.cs" />
     <Compile Include="Controllers\CustomerDebugController.cs" />
+    <Compile Include="Controllers\DebugController.cs" />
     <Compile Include="Controllers\DepartmentDbgController.cs" />
+    <Compile Include="Controllers\ProductDbgController.cs" />
     <Compile Include="Controllers\UserAccessLevelDbgController.cs" />
     <Compile Include="Controllers\ProductListWindowController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -303,6 +306,17 @@
     <Content Include="Views\DepartmentDbg\Details.cshtml" />
     <Content Include="Views\DepartmentDbg\Edit.cshtml" />
     <Content Include="Views\DepartmentDbg\Index.cshtml" />
+    <Content Include="Views\CategoryDbg\Create.cshtml" />
+    <Content Include="Views\CategoryDbg\Delete.cshtml" />
+    <Content Include="Views\CategoryDbg\Details.cshtml" />
+    <Content Include="Views\CategoryDbg\Edit.cshtml" />
+    <Content Include="Views\CategoryDbg\Index.cshtml" />
+    <Content Include="Views\ProductDbg\Create.cshtml" />
+    <Content Include="Views\ProductDbg\Delete.cshtml" />
+    <Content Include="Views\ProductDbg\Details.cshtml" />
+    <Content Include="Views\ProductDbg\Edit.cshtml" />
+    <Content Include="Views\ProductDbg\Index.cshtml" />
+    <Content Include="Views\Debug\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
