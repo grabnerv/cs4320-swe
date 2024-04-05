@@ -273,6 +273,7 @@
     <Content Include="Views\User\CustomerRegistrationForm.cshtml" />
     <Content Include="Views\User\UserQueryForm.cshtml" />
     <Content Include="Views\User\LandingPage.cshtml" />
+    <Content Include="Views\User\AboutUsInformationWindow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

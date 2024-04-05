@@ -1,0 +1,35 @@
+﻿@model Group2_iCLOTHINGApp.Models.AboutUs
+@{
+    ViewBag.Title = "iCLOTHING, Inc. Contact Info";
+}
+<main aria-labelledby="title">
+    <h2 id="title">@ViewBag.Title.</h2>
+    <div>
+        <h2>Business Description</h2>
+        <p>@Model.companyAddress</p>
+    </div>
+
+    <div>
+        <h2>Shipping Policy</h2>
+        <p>@Model.companyShippingPolicy</p>
+    </div>
+    <div>
+        <h2>Return Policy</h2>
+        <p>@Model.companyReturnPolicy</p>
+    </div>
+    <div>
+        <h2>Contact Info</h2>
+        <p>@Model.companyContactInfo</p>
+    </div>
+    <div>
+        <h2>Company Address</h2>
+        <p>@Model.companyAddress</p>
+    </div>
+
+
+
+    <address>
+        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    </address>
+</main>

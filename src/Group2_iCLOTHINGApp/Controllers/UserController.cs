@@ -4,6 +4,7 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Group2_iCLOTHINGApp.Models;
 
 namespace Group2_iCLOTHINGApp.Controllers
 {
@@ -41,6 +42,24 @@ namespace Group2_iCLOTHINGApp.Controllers
         {
             ViewBag.Message = "User landing page.";
             return View();
+        }
+        public ActionResult AboutUsInformationWindow()
+        {
+            ViewBag.Message = "About Us page.";
+            AboutUs aboutUs = GetAboutUsInfo();
+            return View(aboutUs);
+        }
+        private AboutUs GetAboutUsInfo()
+        {
+            AboutUs aboutUsInfo = new AboutUs
+            {
+                companyAddress = "1652 Ouda Drivee",
+                companyShippingPolicy = "Our shipping policy",
+                companyReturnPolicy = "Our return policy",
+                companyContactInfo = "mailto:Support@example.com",
+                companyBusinessDescription = "Description of our business"
+            };
+            return aboutUsInfo;
         }
     }
 }
