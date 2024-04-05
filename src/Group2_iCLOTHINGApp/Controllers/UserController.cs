@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.Remoting.Contexts;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,6 +11,23 @@ using System.Web;
 using System.Web.Mvc;
 using Group2_iCLOTHINGApp.Models;
 using Microsoft.Ajax.Utilities;
+
+namespace Group2_iCLOTHINGApp
+{
+    static public class Util
+    {
+        public static string Sha256(string s)
+        {
+            var hashSB = new StringBuilder();
+            using (var sha = SHA256.Create())
+            {
+                byte[] hashB = sha.ComputeHash(Encoding.UTF8.GetBytes(s));
+                foreach (byte b in hashB) { hashSB.Append(b.ToString("x2")); }
+            }
+            return hashSB.ToString();
+        }
+    }
+}
 
 namespace Group2_iCLOTHINGApp.Controllers
 {
@@ -19,7 +37,7 @@ namespace Group2_iCLOTHINGApp.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("LandingPage");
         }
 
         public ActionResult About()
@@ -57,16 +75,16 @@ namespace Group2_iCLOTHINGApp.Controllers
             // we use incremental ids
 
             // this will be a 1-item list where the item is either null, or an int
-            var maxUserIDOrNull = db.Database.SqlQuery<int?>("SELECT MAX(userID) FROM UserAccessLevel;").ToList();
+            var maybeUserID = db.Database.SqlQuery<int?>("SELECT MAX(userID) FROM UserAccessLevel").ToList();
             int userID;
             
-            if (maxUserIDOrNull[0] == null)
+            if (maybeUserID[0] == null)
             {
                 userID = 1;
             }
             else
             {
-                userID = maxUserIDOrNull[0].Value + 1;
+                userID = maybeUserID[0].Value + 1;
             }
 
             customer.userID = userID;
@@ -77,15 +95,9 @@ namespace Group2_iCLOTHINGApp.Controllers
                 userName = customer.customerName
             };
 
+
             // hash the password (ideally it would be salted + hashed)
-            var hashSB = new StringBuilder();
-            using (var sha = SHA256.Create())
-            {
-                byte[] hashB = sha.ComputeHash(Encoding.UTF8.GetBytes(password));
-                foreach (byte b in hashB) { hashSB.Append(b.ToString("x2")); }
-            }
-            var hashedPassword = hashSB.ToString();
-            
+            var hashedPassword = Util.Sha256(password);
             var up = new UserPassword {
                 userID = customer.userID,
                 userEncryptedPassword = hashedPassword,
@@ -114,13 +126,44 @@ namespace Group2_iCLOTHINGApp.Controllers
         public ActionResult UserQueryForm()
         {
             ViewBag.Message = "User form submission page.";
+
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+
+
             return View();
         }
+
+        [HttpPost]
+        public ActionResult UserQueryForm([Bind(Include = "queryDescription")] UserQuery userQuery)
+        {
+            // submit the user's query
+
+
+
+
+
+
+            return RedirectToAction("Index");
+        }
+
         public ActionResult LandingPage()
         {
-            ViewBag.Message = "User landing page.";
+            if (Session["userID"] != null)
+            {
+                int userID = (int)Session["userID"];
+
+                Console.WriteLine("grabbing customer " + userID.ToString());
+                var customer = db.Customer.Find(userID);
+                return View(customer);
+            }
+            Console.WriteLine("no login detected");
             return View();
         }
+
         public ActionResult AboutUsInformationWindow()
         {
             ViewBag.Message = "About Us page.";
@@ -139,12 +182,58 @@ namespace Group2_iCLOTHINGApp.Controllers
             };
             return aboutUsInfo;
         }
+
+        // accepts GET and POST
         public ActionResult CustomerLoginForm()
         {
+            if (Request.HttpMethod == "POST")
+            {
+                var username = Request.Form["username"];
+                var password = Request.Form["password"];
+
+                var maybeUserID = db.Database.SqlQuery<int?>("SELECT userID FROM Customer WHERE customerName = @p0", username).ToList();
+                int userID;
+                if (maybeUserID[0] == null)
+                {
+                    // error
+                    return View();
+                }
+                else
+                {
+                    userID = maybeUserID[0].Value;
+                }
+
+                // validate password
+                var hash = Util.Sha256(password);
+                var expectedHash = db.UserPassword.Find(userID).userEncryptedPassword;
+                if (hash != expectedHash)
+                {
+                    // error
+                    return View();
+                }
+
+                // successful login
+                Session["userID"] = userID;
+
+                return RedirectToAction("Index");
+            }
+
             ViewBag.Message = "Existing user login.";
             return View();
-            //add authentication
         }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index");
+        }
+        
+        //[HttpPost]
+        //public ActionResult CustomerLoginForm([Bind(Include = "customerName,customerShippingAddress,customerBillingAddress,customerDOB,customerGender")] Customer customer)
+        //{
+
+        //}
+
         public ActionResult UserCommentForm()
         {
             ViewBag.Message = "User comment form.";

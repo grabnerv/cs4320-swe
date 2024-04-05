@@ -1,4 +1,5 @@
-﻿
+﻿@model Group2_iCLOTHINGApp.Models.Customer
+
 @{
     ViewBag.Title = "LandingPage";
 }
@@ -7,22 +8,24 @@
 
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width", initial-scale="1.0" />
+    <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
         }
+
         .button {
             display: inline-block;
             padding: 10px 30px;
-            margin:10px;
+            margin: 10px;
             text-align: center;
             border: 2px solid #007a33;
             color: #007a33;
             border-radius: 4px;
             transition: background-color 0.3s, color 0.3s;
         }
+
         .button-hover {
             background-color: #007a33;
             color: #fff;
@@ -30,16 +33,30 @@
     </style>
 </head>
 <body>
-    <div>
-        <a href="@Url.Action("CustomerRegistrationForm", "User")" class="button">Register New Customer</a>
-        <a href="@Url.Action("CustomerLoginForm", "User")" class="button">Existing customer? Login</a>
-        <a href="@Url.Action("UserQueryForm", "User")" class="button">User Query Page</a>
-        <a href="@Url.Action("AboutUsInformationWindow", "User")" class="button">About Us</a>
-    </div>
-    <div>
-        <a href="@Url.Action("UserCommentForm", "User")" class="button">User Comment Form</a>
-        <a href="@Url.Action("ProductListWindowView", "ProductListWindow")" class="button">Product List</a>
+    @if (Session["userID"] != null)
+    {
+        <div>
+            Welcome, @Html.DisplayFor(model => model.customerName)
+        </div>
+        <div>
+            <a href="@Url.Action("ProductListWindowView", "ProductListWindow")" class="button">Product List</a>
+            <a href="@Url.Action("UserQueryForm", "User")" class="button">User Query Page</a>
+            <a href="@Url.Action("UserCommentForm", "User")" class="button">User Comment Form</a>
+        </div>
+        <div>
+            <a href="@Url.Action("Logout", "User")" class="button">Log out</a>
+        </div>
+    }
+    else
+    {
+        <div>
+            <a href="@Url.Action("CustomerRegistrationForm", "User")" class="button">Register New Customer</a>
+            <a href="@Url.Action("CustomerLoginForm", "User")" class="button">Existing customer? Login</a>
+        </div>
+    }
 
+    <div>
+        <a href="@Url.Action("AboutUsInformationWindow", "User")" class="button">About Us</a>
     </div>
 </body>
 </html>

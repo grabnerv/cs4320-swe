@@ -264,9 +264,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\User\About.cshtml" />
     <Content Include="Views\User\Contact.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Admin\ManageBillingDashboard.cshtml" />
     <Content Include="Views\Admin\ProductCatalogWindow.cshtml" />
     <Content Include="Views\BrandDebug\Create.cshtml" />
