@@ -26,8 +26,10 @@ namespace Group2_iCLOTHINGApp.Models
         public Nullable<int> productPrice { get; set; }
         public Nullable<int> productQuantity { get; set; }
         public Nullable<int> brandID { get; set; }
+        public Nullable<int> categoryID { get; set; }
     
         public virtual Brand Brand { get; set; }
+        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Department> Department { get; set; }
     }

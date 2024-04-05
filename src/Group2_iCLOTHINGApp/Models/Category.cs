@@ -14,8 +14,17 @@ namespace Group2_iCLOTHINGApp.Models
     
     public partial class Category
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Category()
+        {
+            this.Product = new HashSet<Product>();
+        }
+    
         public int categoryID { get; set; }
         public string categoryName { get; set; }
         public string categoryDescription { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Product { get; set; }
     }
 }

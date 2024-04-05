@@ -12,7 +12,7 @@ namespace Group2_iCLOTHINGApp.Controllers
 {
     public class BrandDebugController : Controller
     {
-        private Group2_iCLOTHINGDBEntities5 db = new Group2_iCLOTHINGDBEntities5();
+        private Entities db = new Entities();
 
         // GET: BrandDebug
         public ActionResult Index()

@@ -12,7 +12,7 @@ namespace Group2_iCLOTHINGApp.Controllers
 {
     public class AdministratorDebugController : Controller
     {
-        private Group2_iCLOTHINGDBEntities5 db = new Group2_iCLOTHINGDBEntities5();
+        private Entities db = new Entities();
 
         // GET: AdministratorDebug
         public ActionResult Index()

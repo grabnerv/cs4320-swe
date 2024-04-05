@@ -4,25 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cefee60b282d4b4f940beb21ff32736e" Name="Diagram1">
-        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.AboutUs" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Administrator" Width="1.5" PointX="3.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Brand" Width="1.5" PointX="10.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Category" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Customer" Width="1.5" PointX="3.75" PointY="12.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Department" Width="1.5" PointX="10.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Email" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.ItemDeliery" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.OrderStatus" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Product" Width="1.5" PointX="13" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.ShoppingCart" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.UserAccessLevel" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.UserComments" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.UserPassword" Width="1.5" PointX="8.25" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.UserQuery" Width="1.5" PointX="8.25" PointY="12.625" IsExpanded="true" />
-        <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK__UserAcces__userI__403A8C7D" ManuallyRouted="false" />
+      <Diagram DiagramId="52e7101ca9164c3da82b198e2967cbc4" Name="Diagram1">
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.AboutUs" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Administrator" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Brand" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Category" Width="1.5" PointX="5.75" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Customer" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Department" Width="1.5" PointX="5.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Email" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.ItemDeliery" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.OrderStatus" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.Product" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.ShoppingCart" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.UserAccessLevel" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.UserComments" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.UserPassword" Width="1.5" PointX="5.25" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group2_iCLOTHINGDBModel.UserQuery" Width="1.5" PointX="5.25" PointY="21.375" IsExpanded="true" />
+        <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK_Administrator_UserAccessLevel" ManuallyRouted="false" />
         <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK__Product__brandID__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK__UserAcces__userI__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK_Customer_UserAccessLevel" ManuallyRouted="false" />
         <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK__Email__userID__5441852A" ManuallyRouted="false" />
         <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK__ItemDelie__cartI__571DF1D5" ManuallyRouted="false" />
         <AssociationConnector Association="Group2_iCLOTHINGDBModel.FK__OrderStat__cartI__59FA5E80" ManuallyRouted="false" />
