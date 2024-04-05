@@ -19,10 +19,12 @@ namespace Group2_iCLOTHINGApp.Controllers
             List<Department> departmentList = GetDepartments();
             List<Category> categoryList = GetCategories();
             List<Brand> brandList = GetBrands();
+            List<Product> productList = GetProducts();
             
             ViewBag.departmentList = departmentList;
             ViewBag.categoryList = categoryList;
             ViewBag.brandList = brandList;
+            ViewBag.productList = productList;
             return View();
         }
 
@@ -101,23 +103,74 @@ namespace Group2_iCLOTHINGApp.Controllers
                 new Category
                 {
                     categoryDescription = "Category 1 description",
-                    categoryID = 1,
+                    categoryID = 0,
                     categoryName = "Category 1"
                 },
                 new Category
                 {
                     categoryDescription = "Category 2 description",
-                    categoryID = 2,
+                    categoryID = 1,
                     categoryName = "Category 2"
                 },
                 new Category
                 {
                     categoryDescription = "Category 3 description",
-                    categoryID = 3,
+                    categoryID = 2,
                     categoryName = "Category 3"
                 }
             };
             return categories;
+        }
+        private List<Product> GetProducts()
+        {
+            List<Product> products = new List<Product> {
+                new Product
+                {
+                    productID = 0,
+                    productName = "Shoes 1",
+                    productDescription = "these are some shoes",
+                    productPrice = 100,
+                    productQuantity = 67,
+                    brandID = 1
+                },
+                new Product
+                {
+                    productID = 2,
+                    productName = "Shoes 2",
+                    productDescription = "these are some shoes",
+                    productPrice = 100,
+                    productQuantity = 87,
+                    brandID = 1
+                },
+                new Product
+                {
+                    productID = 3,
+                    productName = "Shoes 3",
+                    productDescription = "these are some shoes",
+                    productPrice = 100,
+                    productQuantity = 84,
+                    brandID = 1
+                },
+                new Product
+                {
+                    productID = 4,
+                    productName = "Shirt 1",
+                    productDescription = "these are some shirt",
+                    productPrice = 100,
+                    productQuantity = 13,
+                    brandID = 2
+                },
+                new Product
+                {
+                    productID = 5,
+                    productName = "Shirt 2",
+                    productDescription = "these are some shirt",
+                    productPrice = 100,
+                    productQuantity = 42,
+                    brandID = 0
+                },
+            };
+            return products;
         }
     }
 }

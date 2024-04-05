@@ -27,7 +27,9 @@
     <ul>
         @foreach (var brand in ViewBag.brandList)
         {
-            <li><a href="@Url.Action("BrandDetails", "ProductListWindow", new {id = brand.brandId})">@brand.brandName || @brand.drandDescription</a></li>
+            <li>
+                <a href="@Url.Action("BrandDetails", "ProductListWindow", new {id = brand.brandId})">@brand.brandName || @brand.drandDescription</a>
+            </li>
         }
     </ul>
 </body>

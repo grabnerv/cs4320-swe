@@ -12,7 +12,7 @@ namespace Group2_iCLOTHINGApp
         public static void RegisterRoutes(RouteCollection routes)
         {
             // redirect Console writes to a file globally
-            var sw = new System.IO.StreamWriter("C:\\Users\\Matt\\out.txt", true);
+            var sw = new System.IO.StreamWriter("C:\\Users\\jdogb\\out.txt", true);
             sw.AutoFlush = true;
             Console.SetOut(sw);
             Console.WriteLine("hello");
