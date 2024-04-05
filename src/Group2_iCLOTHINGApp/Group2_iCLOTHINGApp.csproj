@@ -132,6 +132,7 @@
     <Compile Include="Controllers\BrandDebugController.cs" />
     <Compile Include="Controllers\CustomerDebugController.cs" />
     <Compile Include="Controllers\UserAccessLevelDbgController.cs" />
+    <Compile Include="Controllers\ProductListWindowController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -292,6 +293,12 @@
     <Content Include="Views\UserAccessLevelDbg\Details.cshtml" />
     <Content Include="Views\UserAccessLevelDbg\Edit.cshtml" />
     <Content Include="Views\UserAccessLevelDbg\Index.cshtml" />
+    <Content Include="Views\User\CustomerLoginForm.cshtml" />
+    <Content Include="Views\User\UserCommentForm.cshtml" />
+    <Content Include="Views\ProductListWindow\ProductListWindowView.cshtml" />
+    <Content Include="Views\ProductListWindow\DepartmentDetails.cshtml" />
+    <Content Include="Views\ProductListWindow\CategoryDetails.cshtml" />
+    <Content Include="Views\ProductListWindow\BrandDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
