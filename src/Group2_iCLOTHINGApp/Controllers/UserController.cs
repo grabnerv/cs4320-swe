@@ -76,16 +76,8 @@ namespace Group2_iCLOTHINGApp.Controllers
 
             // this will be a 1-item list where the item is either null, or an int
             var maybeUserID = db.Database.SqlQuery<int?>("SELECT MAX(userID) FROM UserAccessLevel").ToList();
-            int userID;
-            
-            if (maybeUserID[0] == null)
-            {
-                userID = 1;
-            }
-            else
-            {
-                userID = maybeUserID[0].Value + 1;
-            }
+            int userID = 1;
+            if (maybeUserID[0] != null) { userID = maybeUserID[0].Value + 1; }
 
             customer.userID = userID;
             var ual = new UserAccessLevel
@@ -125,27 +117,76 @@ namespace Group2_iCLOTHINGApp.Controllers
 
         public ActionResult UserQueryForm()
         {
-            ViewBag.Message = "User form submission page.";
-
             if (Session["userID"] == null)
             {
                 return RedirectToAction("Index");
             }
 
-
-
+            ViewBag.Message = "User form submission page.";
             return View();
         }
 
         [HttpPost]
-        public ActionResult UserQueryForm([Bind(Include = "queryDescription")] UserQuery userQuery)
+        public ActionResult UserQueryForm([Bind(Include = "queryDescription")] UserQuery query)
         {
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Index");
+            }
+
             // submit the user's query
 
+            var maybeQueryID = db.Database.SqlQuery<int?>("SELECT MAX(queryID) FROM UserQuery").ToList();
+            int queryID = 1;
+            if (maybeQueryID[0] != null) { queryID = maybeQueryID[0].Value + 1; }
 
+            query.queryID = queryID;
+            query.queryDate = DateTime.Today;
+            query.userID = (int)Session["userID"];
 
+            if (ModelState.IsValid)
+            {
+                db.UserQuery.Add(query);
+                db.SaveChanges();
+            }
 
+            return RedirectToAction("Index");
+        }
 
+        public ActionResult UserCommentForm()
+        {
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.Message = "User comment form.";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UserCommentForm([Bind(Include = "commentDescription")] UserComments comment)
+        {
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            // submit the user's comment
+
+            var maybeCommentID = db.Database.SqlQuery<int?>("SELECT MAX(commentID) FROM UserComments").ToList();
+            int commentID = 1;
+            if (maybeCommentID[0] != null) { commentID = maybeCommentID[0].Value + 1; }
+
+            comment.commentID = commentID;
+            comment.commentDate = DateTime.Today;
+            comment.userID = (int)Session["userID"];
+
+            if (ModelState.IsValid)
+            {
+                db.UserComments.Add(comment);
+                db.SaveChanges();
+            }
 
             return RedirectToAction("Index");
         }
@@ -227,17 +268,7 @@ namespace Group2_iCLOTHINGApp.Controllers
             Session.Abandon();
             return RedirectToAction("Index");
         }
-        
-        //[HttpPost]
-        //public ActionResult CustomerLoginForm([Bind(Include = "customerName,customerShippingAddress,customerBillingAddress,customerDOB,customerGender")] Customer customer)
-        //{
 
-        //}
 
-        public ActionResult UserCommentForm()
-        {
-            ViewBag.Message = "User comment form.";
-            return View();
-        }
     }
 }
