@@ -93,7 +93,7 @@ namespace Group2_iCLOTHINGApp.Controllers
                 userAccountExpiryDate = null
             };
             
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 db.UserAccessLevel.Add(ual);
                 db.SaveChanges();
