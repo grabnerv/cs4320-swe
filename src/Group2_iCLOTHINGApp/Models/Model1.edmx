@@ -112,6 +112,7 @@
           <Property Name="productPrice" Type="int" />
           <Property Name="productQuantity" Type="int" />
           <Property Name="brandID" Type="int" />
+          <Property Name="categoryID" Type="int" />
         </EntityType>
         <EntityType Name="ShoppingCart">
           <Key>
@@ -252,30 +253,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserAcces__userI__3F466844">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-          <End Role="UserAccessLevel" Type="Self.UserAccessLevel" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="UserAccessLevel">
-              <PropertyRef Name="userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserAcces__userI__403A8C7D">
-          <End Role="Administrator" Type="Self.Administrator" Multiplicity="1" />
-          <End Role="UserAccessLevel" Type="Self.UserAccessLevel" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Administrator">
-              <PropertyRef Name="userId" />
-            </Principal>
-            <Dependent Role="UserAccessLevel">
-              <PropertyRef Name="userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__UserComme__userI__5EBF139D">
           <End Role="UserAccessLevel" Type="Self.UserAccessLevel" Multiplicity="0..1" />
           <End Role="UserComments" Type="Self.UserComments" Multiplicity="*" />
@@ -309,6 +286,42 @@
             </Principal>
             <Dependent Role="UserQuery">
               <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Administrator_UserAccessLevel">
+          <End Role="UserAccessLevel" Type="Self.UserAccessLevel" Multiplicity="1" />
+          <End Role="Administrator" Type="Self.Administrator" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccessLevel">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Administrator">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_UserAccessLevel">
+          <End Role="UserAccessLevel" Type="Self.UserAccessLevel" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccessLevel">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="categoryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="categoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -362,14 +375,6 @@
             <End Role="Brand" EntitySet="Brand" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserAcces__userI__3F466844" Association="Self.FK__UserAcces__userI__3F466844">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="UserAccessLevel" EntitySet="UserAccessLevel" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserAcces__userI__403A8C7D" Association="Self.FK__UserAcces__userI__403A8C7D">
-            <End Role="Administrator" EntitySet="Administrator" />
-            <End Role="UserAccessLevel" EntitySet="UserAccessLevel" />
-          </AssociationSet>
           <AssociationSet Name="FK__UserComme__userI__5EBF139D" Association="Self.FK__UserComme__userI__5EBF139D">
             <End Role="UserAccessLevel" EntitySet="UserAccessLevel" />
             <End Role="UserComments" EntitySet="UserComments" />
@@ -381,6 +386,18 @@
           <AssociationSet Name="FK__UserQuery__userI__6477ECF3" Association="Self.FK__UserQuery__userI__6477ECF3">
             <End Role="UserAccessLevel" EntitySet="UserAccessLevel" />
             <End Role="UserQuery" EntitySet="UserQuery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Administrator_UserAccessLevel" Association="Self.FK_Administrator_UserAccessLevel">
+            <End Role="UserAccessLevel" EntitySet="UserAccessLevel" />
+            <End Role="Administrator" EntitySet="Administrator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_UserAccessLevel" Association="Self.FK_Customer_UserAccessLevel">
+            <End Role="UserAccessLevel" EntitySet="UserAccessLevel" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -406,7 +423,7 @@
           <Property Name="adminName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="adminEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="dateHired" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="UserAccessLevel" Relationship="Self.FK__UserAcces__userI__403A8C7D" FromRole="Administrator" ToRole="UserAccessLevel" />
+          <NavigationProperty Name="UserAccessLevel" Relationship="Self.FK_Administrator_UserAccessLevel" FromRole="Administrator" ToRole="UserAccessLevel" />
         </EntityType>
         <EntityType Name="Brand">
           <Key>
@@ -424,6 +441,7 @@
           <Property Name="categoryID" Type="Int32" Nullable="false" />
           <Property Name="categoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="categoryDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -435,7 +453,7 @@
           <Property Name="customerBillingAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="customerDOB" Type="DateTime" Precision="0" />
           <Property Name="customerGender" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="UserAccessLevel" Relationship="Self.FK__UserAcces__userI__3F466844" FromRole="Customer" ToRole="UserAccessLevel" />
+          <NavigationProperty Name="UserAccessLevel" Relationship="Self.FK_Customer_UserAccessLevel" FromRole="Customer" ToRole="UserAccessLevel" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -486,7 +504,9 @@
           <Property Name="productPrice" Type="Int32" />
           <Property Name="productQuantity" Type="Int32" />
           <Property Name="brandID" Type="Int32" />
+          <Property Name="categoryID" Type="Int32" />
           <NavigationProperty Name="Brand" Relationship="Self.FK__Product__brandID__4D94879B" FromRole="Product" ToRole="Brand" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="Department" Relationship="Self.DepartmentProducts" FromRole="Product" ToRole="Department" />
         </EntityType>
         <EntityType Name="ShoppingCart">
@@ -507,8 +527,8 @@
           <Property Name="userID" Type="Int32" Nullable="false" />
           <Property Name="userAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="userName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Administrator" Relationship="Self.FK__UserAcces__userI__403A8C7D" FromRole="UserAccessLevel" ToRole="Administrator" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK__UserAcces__userI__3F466844" FromRole="UserAccessLevel" ToRole="Customer" />
+          <NavigationProperty Name="Administrator" Relationship="Self.FK_Administrator_UserAccessLevel" FromRole="UserAccessLevel" ToRole="Administrator" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_UserAccessLevel" FromRole="UserAccessLevel" ToRole="Customer" />
           <NavigationProperty Name="Email" Relationship="Self.FK__Email__userID__5441852A" FromRole="UserAccessLevel" ToRole="Email" />
           <NavigationProperty Name="UserComments" Relationship="Self.FK__UserComme__userI__5EBF139D" FromRole="UserAccessLevel" ToRole="UserComments" />
           <NavigationProperty Name="UserPassword" Relationship="Self.FK__UserPassw__userI__619B8048" FromRole="UserAccessLevel" ToRole="UserPassword" />
@@ -545,15 +565,15 @@
           <Property Name="userID" Type="Int32" />
           <NavigationProperty Name="UserAccessLevel" Relationship="Self.FK__UserQuery__userI__6477ECF3" FromRole="UserQuery" ToRole="UserAccessLevel" />
         </EntityType>
-        <Association Name="FK__UserAcces__userI__403A8C7D">
-          <End Role="Administrator" Type="Self.Administrator" Multiplicity="1" />
-          <End Role="UserAccessLevel" Type="Self.UserAccessLevel" Multiplicity="0..1" />
+        <Association Name="FK_Administrator_UserAccessLevel">
+          <End Role="UserAccessLevel" Type="Self.UserAccessLevel" Multiplicity="1" />
+          <End Role="Administrator" Type="Self.Administrator" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Administrator">
-              <PropertyRef Name="userId" />
-            </Principal>
-            <Dependent Role="UserAccessLevel">
+            <Principal Role="UserAccessLevel">
               <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Administrator">
+              <PropertyRef Name="userId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -569,14 +589,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserAcces__userI__3F466844">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-          <End Role="UserAccessLevel" Type="Self.UserAccessLevel" Multiplicity="0..1" />
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Customer">
+            <Principal Role="Category">
+              <PropertyRef Name="categoryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="categoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_UserAccessLevel">
+          <End Role="UserAccessLevel" Type="Self.UserAccessLevel" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccessLevel">
               <PropertyRef Name="userID" />
             </Principal>
-            <Dependent Role="UserAccessLevel">
+            <Dependent Role="Customer">
               <PropertyRef Name="userID" />
             </Dependent>
           </ReferentialConstraint>
@@ -661,7 +693,7 @@
           <End Role="Department" Type="Self.Department" Multiplicity="*" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="Group2_iCLOTHINGDBEntities5" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AboutUs" EntityType="Self.AboutUs" />
           <EntitySet Name="Administrator" EntityType="Self.Administrator" />
           <EntitySet Name="Brand" EntityType="Self.Brand" />
@@ -677,17 +709,21 @@
           <EntitySet Name="UserComments" EntityType="Self.UserComments" />
           <EntitySet Name="UserPassword" EntityType="Self.UserPassword" />
           <EntitySet Name="UserQuery" EntityType="Self.UserQuery" />
-          <AssociationSet Name="FK__UserAcces__userI__403A8C7D" Association="Self.FK__UserAcces__userI__403A8C7D">
-            <End Role="Administrator" EntitySet="Administrator" />
+          <AssociationSet Name="FK_Administrator_UserAccessLevel" Association="Self.FK_Administrator_UserAccessLevel">
             <End Role="UserAccessLevel" EntitySet="UserAccessLevel" />
+            <End Role="Administrator" EntitySet="Administrator" />
           </AssociationSet>
           <AssociationSet Name="FK__Product__brandID__4D94879B" Association="Self.FK__Product__brandID__4D94879B">
             <End Role="Brand" EntitySet="Brand" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserAcces__userI__3F466844" Association="Self.FK__UserAcces__userI__3F466844">
-            <End Role="Customer" EntitySet="Customer" />
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_UserAccessLevel" Association="Self.FK_Customer_UserAccessLevel">
             <End Role="UserAccessLevel" EntitySet="UserAccessLevel" />
+            <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
           <AssociationSet Name="FK__Email__userID__5441852A" Association="Self.FK__Email__userID__5441852A">
             <End Role="UserAccessLevel" EntitySet="UserAccessLevel" />
@@ -727,7 +763,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Group2_iCLOTHINGDBModelStoreContainer" CdmEntityContainer="Group2_iCLOTHINGDBEntities5">
+        <EntityContainerMapping StorageEntityContainer="Group2_iCLOTHINGDBModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="AboutUs">
             <EntityTypeMapping TypeName="Group2_iCLOTHINGDBModel.AboutUs">
               <MappingFragment StoreEntitySet="AboutUs">
@@ -827,6 +863,7 @@
                 <ScalarProperty Name="productPrice" ColumnName="productPrice" />
                 <ScalarProperty Name="productQuantity" ColumnName="productQuantity" />
                 <ScalarProperty Name="brandID" ColumnName="brandID" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
