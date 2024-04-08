@@ -9,41 +9,35 @@ namespace Group2_iCLOTHINGApp.Controllers
 {
     public class ShoppingCartWindowController : Controller
     {
-        // GET: Cart
+        private Entities db = new Entities();
+
+        // GET: ShoppingCartWindow
         public ActionResult Index()
         {
-            List<Product> productsInCart = GetItemsInCart();
-            return View(productsInCart);
+            // ensure user logged in
+            if (Session["userID"] == null) { return RedirectToAction("Index", "User"); }
+            int userID = (int)Session["userID"];
+
+            List<CartItem> cartItems = ShoppingCartAPI.GetItemsInCart(db, userID);
+            return View(cartItems);
         }
 
         [HttpPost]
         public ActionResult AddToCart(int productId)
         {
+            // ensure user logged in
+            if (Session["userID"] == null) { return RedirectToAction("Index", "User"); }
+            int userID = (int)Session["userID"];
 
- 
-            Product product = GetProduct(productId);
-            if(product != null)
+            if (db.Product.Find(productId) != null)
             {
-                AddProductToCart(product);
+                ShoppingCartAPI.AddToShoppingCart(db, userID, productId, 1);
                 return RedirectToAction("Index", "Cart");
-            } else
+            }
+            else
             {
                 return RedirectToAction("Index", "ProductList");
             }
-            return View();
-        }
-        private Product GetProduct(int id)
-        {
-            //returning dummy product, put the database "GetProduct" function here.
-            return new Product { productID = id, productName = "name", productDescription = "description" };
-        }
-        private ShoppingCartWindowController(Product product)
-        {
-            //add API logic here
-        }
-        private ShoppingCartWindowController()
-        {
-            //add Get function to see items currently in cart.
         }
     }
 }

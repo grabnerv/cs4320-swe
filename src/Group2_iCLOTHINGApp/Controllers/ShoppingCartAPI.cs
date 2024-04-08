@@ -5,9 +5,11 @@ using System.Data.Entity;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace Group2_iCLOTHINGApp
 {
+    // TODO: Move elsewhere, and refactor existing code to use this
     public static class IncrementalID
     {
         // Get next global incremental <cart/product/user/...> ID
@@ -28,9 +30,15 @@ namespace Group2_iCLOTHINGApp
             return id;
         }
     }
+
+    public class CartItem
+    {
+        public Product p;
+        public int quantity;
+    }
 }
 
-namespace Group2_iCLOTHINGApp.Controllers
+namespace Group2_iCLOTHINGApp
 {
     // NOTE: Internally, there is one "ShoppingCart" object in the DB for each productID + user combo.
     // On the frontend, this is represented to the user as if there was one shopping cart per user.
@@ -96,6 +104,23 @@ namespace Group2_iCLOTHINGApp.Controllers
             }
 
             db.SaveChanges();
+        }
+
+        public static List<CartItem> GetItemsInCart(Entities db, int userID)
+        {
+            // select carts for all users
+            var maybeCarts = db.ShoppingCart.SqlQuery("SELECT * FROM ShoppingCart");
+
+            // filter to carts for the current user (if they exist)
+            var maybeFilteredCarts = maybeCarts.Where(sc => sc.UserAccessLevel.First().userID == userID);
+
+            // for each cart, get its associated product
+            var items = new List<CartItem>();
+            foreach (ShoppingCart sc in maybeFilteredCarts)
+            {
+                items.Add(new CartItem { p = db.Product.Find(sc.cartProductID), quantity = sc.cartProductQuantity.Value });
+            }
+            return items;
         }
     }
 }

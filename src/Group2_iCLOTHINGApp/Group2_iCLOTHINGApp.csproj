@@ -320,13 +320,12 @@
     <Content Include="Views\ProductDbg\Edit.cshtml" />
     <Content Include="Views\ProductDbg\Index.cshtml" />
     <Content Include="Views\Debug\Index.cshtml" />
-    <Content Include="Views\ShoppingCartWindow.cshtml" />
+    <Content Include="Views\ShoppingCartWindow\Index.cshtml" />
     <Content Include="Views\ShoppingCartDemo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cart\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
