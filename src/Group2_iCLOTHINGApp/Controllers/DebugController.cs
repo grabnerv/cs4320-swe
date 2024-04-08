@@ -48,6 +48,9 @@ namespace Group2_iCLOTHINGApp.Controllers
             return s;
         }
 
+
+
+
         // GET: Debug
         public ActionResult Index()
         {
