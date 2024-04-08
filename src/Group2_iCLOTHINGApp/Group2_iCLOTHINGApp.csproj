@@ -130,6 +130,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdministratorDebugController.cs" />
     <Compile Include="Controllers\BrandDebugController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryDbgController.cs" />
     <Compile Include="Controllers\CustomerDebugController.cs" />
     <Compile Include="Controllers\DebugController.cs" />
@@ -317,9 +318,11 @@
     <Content Include="Views\ProductDbg\Edit.cshtml" />
     <Content Include="Views\ProductDbg\Index.cshtml" />
     <Content Include="Views\Debug\Index.cshtml" />
+    <Content Include="Views\ShoppingCartWindow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

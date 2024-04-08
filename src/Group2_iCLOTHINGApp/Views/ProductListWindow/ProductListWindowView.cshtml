@@ -22,6 +22,20 @@
         th {
             background-color: #b200ff
         }
+        .button {
+            display: inline-block;
+            padding: 10px 30px;
+            margin: 10px;
+            text-align: center;
+            border: 2px solid #007a33;
+            color: #007a33;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .button-hover {
+            background-color: #007a33;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -37,7 +51,13 @@
                 <tr>
                     <td>@product.productName</td>
                     <td>@product.Brand.brandName</td>
-                    <td>@(string.Join(", ", product.Department))</td>
+                    <td>@Util.CombineDepartments(product.Department)</td>
+                    <td>
+                        <form method="post" action="@Url.Action("AddToCart", "Cart")">
+                            <input type="hidden" name="productId" value="@product.productID"/>
+                            <input type="submit" value="Add to cart" />
+                        </form>
+                    </td>
                 </tr>
             }
     </table>
