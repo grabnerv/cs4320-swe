@@ -26,6 +26,24 @@ namespace Group2_iCLOTHINGApp
             }
             return hashSB.ToString();
         }
+
+        public static string CombineDepartments(IEnumerable<Department> list)
+        {
+            var sb = new StringBuilder();
+            int c = list.Count();
+            int i = 0;
+            foreach (Department item in list)
+            {
+                sb.Append(item.departmentName);
+                if (i != c - 1)
+                {
+                    sb.Append(", ");
+                }
+                i++;
+            }
+            string s = sb.ToString();
+            return s;
+        }
     }
 }
 
@@ -235,7 +253,7 @@ namespace Group2_iCLOTHINGApp.Controllers
 
                 var maybeUserID = db.Database.SqlQuery<int?>("SELECT userID FROM Customer WHERE customerName = @p0", username).ToList();
                 int userID;
-                if (maybeUserID[0] == null)
+                if (maybeUserID.Count == 0 || maybeUserID[0] == null)
                 {
                     // error
                     return View();
