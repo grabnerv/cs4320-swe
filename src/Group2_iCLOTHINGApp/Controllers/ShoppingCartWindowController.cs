@@ -21,23 +21,5 @@ namespace Group2_iCLOTHINGApp.Controllers
             List<CartItem> cartItems = ShoppingCartAPI.GetItemsInCart(db, userID);
             return View(cartItems);
         }
-
-        [HttpPost]
-        public ActionResult AddToCart(int productId)
-        {
-            // ensure user logged in
-            if (Session["userID"] == null) { return RedirectToAction("Index", "User"); }
-            int userID = (int)Session["userID"];
-
-            if (db.Product.Find(productId) != null)
-            {
-                ShoppingCartAPI.AddToShoppingCart(db, userID, productId, 1);
-                return RedirectToAction("Index", "Cart");
-            }
-            else
-            {
-                return RedirectToAction("Index", "ProductList");
-            }
-        }
     }
 }

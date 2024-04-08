@@ -45,6 +45,7 @@
             <th>Product</th>
             <th>Brand</th>
             <th>Department</th>
+            <th></th>
         </tr>
         @foreach (var product in ViewBag.productList)
             {
@@ -53,7 +54,7 @@
                     <td>@product.Brand.brandName</td>
                     <td>@Util.CombineDepartments(product.Department)</td>
                     <td>
-                        <form method="post" action="@Url.Action("AddToCart", "Cart")">
+                        <form method="post" action="@Url.Action("AddToCart", "ProductListWindow")">
                             <input type="hidden" name="productId" value="@product.productID"/>
                             <input type="submit" value="Add to cart" />
                         </form>

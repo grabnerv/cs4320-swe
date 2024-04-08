@@ -51,15 +51,14 @@
                 <th>Brand</th>
                 <th>Quantity</th>
             </tr>
-            <tr>
-                @foreach (var item in Model)
-                {
+            @foreach (var item in Model)
+            {
+                <tr>
                     <td>@item.p.productName</td>
                     <td>@item.p.Brand.brandName</td>
                     <td>@item.quantity</td>
-                }
-            </tr>
-
+                </tr>
+            }
         </table>
     }
     else

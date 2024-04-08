@@ -30,6 +30,22 @@ namespace Group2_iCLOTHINGApp.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult AddToCart()
+        {
+            // ensure user login
+            if (Session["userID"] == null) { return RedirectToAction("Index", "User"); }
+            int userID = (int)Session["userID"];
+
+            int productId = int.Parse(Request.Form["productId"]);
+            if (db.Product.Find(productId) != null)
+            {
+                ShoppingCartAPI.AddToShoppingCart(db, userID, productId, 1);
+            }
+
+            return RedirectToAction("ProductListWindowView", "ProductListWindow");
+        }
+
         public ActionResult DepartmentDetails(int id)
         {
             Department d = db.Department.Find(id);
