@@ -121,6 +121,7 @@
           <Property Name="cartID" Type="int" Nullable="false" />
           <Property Name="cartProductPrice" Type="int" />
           <Property Name="cartProductQuantity" Type="int" />
+          <Property Name="cartProductID" Type="int" />
         </EntityType>
         <EntityType Name="UserAccessLevel">
           <Key>
@@ -325,6 +326,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ShoppingCart_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="productID" />
+            </Principal>
+            <Dependent Role="ShoppingCart">
+              <PropertyRef Name="cartProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Group2_iCLOTHINGDBModelStoreContainer">
           <EntitySet Name="AboutUs" EntityType="Self.AboutUs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
@@ -398,6 +411,10 @@
           <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCart_Product" Association="Self.FK_ShoppingCart_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -507,6 +524,7 @@
           <Property Name="categoryID" Type="Int32" />
           <NavigationProperty Name="Brand" Relationship="Self.FK__Product__brandID__4D94879B" FromRole="Product" ToRole="Brand" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="ShoppingCart" Relationship="Self.FK_ShoppingCart_Product" FromRole="Product" ToRole="ShoppingCart" />
           <NavigationProperty Name="Department" Relationship="Self.DepartmentProducts" FromRole="Product" ToRole="Department" />
         </EntityType>
         <EntityType Name="ShoppingCart">
@@ -516,8 +534,10 @@
           <Property Name="cartID" Type="Int32" Nullable="false" />
           <Property Name="cartProductPrice" Type="Int32" />
           <Property Name="cartProductQuantity" Type="Int32" />
+          <Property Name="cartProductID" Type="Int32" />
           <NavigationProperty Name="ItemDeliery" Relationship="Self.FK__ItemDelie__cartI__571DF1D5" FromRole="ShoppingCart" ToRole="ItemDeliery" />
           <NavigationProperty Name="OrderStatus" Relationship="Self.FK__OrderStat__cartI__59FA5E80" FromRole="ShoppingCart" ToRole="OrderStatus" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ShoppingCart_Product" FromRole="ShoppingCart" ToRole="Product" />
           <NavigationProperty Name="UserAccessLevel" Relationship="Self.Carts" FromRole="ShoppingCart" ToRole="UserAccessLevel" />
         </EntityType>
         <EntityType Name="UserAccessLevel">
@@ -649,6 +669,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ShoppingCart_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="productID" />
+            </Principal>
+            <Dependent Role="ShoppingCart">
+              <PropertyRef Name="cartProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__UserComme__userI__5EBF139D">
           <End Role="UserAccessLevel" Type="Self.UserAccessLevel" Multiplicity="0..1" />
           <End Role="UserComments" Type="Self.UserComments" Multiplicity="*" />
@@ -736,6 +768,10 @@
           <AssociationSet Name="FK__OrderStat__cartI__59FA5E80" Association="Self.FK__OrderStat__cartI__59FA5E80">
             <End Role="ShoppingCart" EntitySet="ShoppingCart" />
             <End Role="OrderStatus" EntitySet="OrderStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCart_Product" Association="Self.FK_ShoppingCart_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
           </AssociationSet>
           <AssociationSet Name="FK__UserComme__userI__5EBF139D" Association="Self.FK__UserComme__userI__5EBF139D">
             <End Role="UserAccessLevel" EntitySet="UserAccessLevel" />
@@ -873,6 +909,7 @@
                 <ScalarProperty Name="cartID" ColumnName="cartID" />
                 <ScalarProperty Name="cartProductPrice" ColumnName="cartProductPrice" />
                 <ScalarProperty Name="cartProductQuantity" ColumnName="cartProductQuantity" />
+                <ScalarProperty Name="cartProductID" ColumnName="cartProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
