@@ -218,9 +218,13 @@ namespace Group2_iCLOTHINGApp.Controllers
 
                 Console.WriteLine("grabbing customer " + userID.ToString());
                 var customer = db.Customer.Find(userID);
+
+                bool isAdmin = db.UserAccessLevel.Find(userID).userAccess == "ADMIN";
+                ViewBag.isAdmin = isAdmin;
                 return View(customer);
             }
             Console.WriteLine("no login detected");
+            ViewBag.isAdmin = false;
             return View();
         }
 

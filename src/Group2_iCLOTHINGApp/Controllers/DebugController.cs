@@ -1,4 +1,5 @@
 ﻿using Group2_iCLOTHINGApp.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,11 +55,22 @@ namespace Group2_iCLOTHINGApp.Controllers
         // GET: Debug
         public ActionResult Index()
         {
+            return View();
+
             //ShoppingCartAPI.AddToShoppingCart(db, 1, 1, 1);
 
-            ShoppingCartAPI.RemoveFromShoppingCart(db, 1, 1, 1);
+            //ShoppingCartAPI.RemoveFromShoppingCart(db, 1, 1, 1);
 
-            return View();
+            //var sql = "SELECT MAX(brandId) FROM Brand";
+            //List<object> result = db.Database.SqlQuery<object>(sql).ToList();
+
+            ////var s1 = JsonConvert.SerializeObject(result);
+            //string s = "";
+            //foreach (object item in result)
+            //{
+            //    Int32 i = item as Int32;
+            //}
+            //return new ContentResult { Content = s, ContentEncoding = Encoding.UTF8, ContentType = "text/plain" };
         }
     }
 }

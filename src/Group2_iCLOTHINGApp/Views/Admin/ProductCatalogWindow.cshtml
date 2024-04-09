@@ -3,5 +3,31 @@
     ViewBag.Title = "ProductCatalogWindow";
 }
 
-<h2>ProductCatalogWindow</h2>
+<style>
+    textarea {
+        font-family: Courier New, Courier, monospace;
+        font-weight: bold;
+        resize: both;
+        max-width: 500px;
+    }
+</style>
 
+<h2>Admin Panel</h2>
+
+<h3>SQL command</h3>
+
+<div>
+    <form method="post" action="@Url.Action("ProductCatalogWindow", "Admin")">
+        <div>
+            <textarea name="sql" rows="4" cols="100"></textarea>
+        </div>
+        <input type="submit" value="Submit" />
+    </form>
+</div><br />
+
+<div>
+    <h3>Examples:</h3>
+    <p>Create a brand:</p>
+    <pre>INSERT INTO Brand VALUES(X, 'New brand', 'New brand description')</pre>
+    <p>Replace X with the max brand ID + 1.</p>
+</div>

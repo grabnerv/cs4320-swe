@@ -55,6 +55,14 @@
         </div>
     }
 
+    @if (ViewBag.isAdmin)
+    {
+        <div>
+            <a href="@Url.Action("ProductCatalogWindow", "Admin")" class="button">Admin Panel</a>
+            <a href="@Url.Action("ManageBillingDashboard", "Admin")" class="button">Billing Dashboard</a>
+        </div>
+    }
+
     <div>
         <a href="@Url.Action("ProductListWindowView", "ProductListWindow")" class="button">Product List</a>
         <a href="@Url.Action("AboutUsInformationWindow", "User")" class="button">About Us</a>
