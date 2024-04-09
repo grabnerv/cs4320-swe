@@ -1,0 +1,87 @@
+﻿@model List<Group2_iCLOTHINGApp.Models.Product>
+@{
+    ViewBag.Title = "Product List Window View";
+}
+
+<h2>Product List</h2>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
+    <title>Product list</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            border: 2px solid #808080 text-align: left;
+        }
+
+        th {
+            background-color: #b200ff
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 30px;
+            margin: 10px;
+            text-align: center;
+            border: 2px solid #007a33;
+            color: #007a33;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button-hover {
+            background-color: #007a33;
+            color: #fff;
+        }
+        .remove-button {
+            padding: 5px 10px;
+            background-color: #007a33;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cart</h1>
+    @if (Model.Count > 0)
+            {
+                <table>
+                    <tr>
+                        <th>Product name</th>
+                        <th>Brand</th>
+                        <th>Quantity</th>
+                        <th>Remove</th>
+                    </tr>
+                    @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.productName</td>
+                        <td>@item.Brand</td>
+                        <td>@item.productQuantity</td>
+                        <td>
+                            <form method="post" action="@Url.Action("RemoveFromCart", "Cart")">
+                                <input type="hidden" name="productId" value="item.Product.ProductID"/>
+                                <input type="submit" class="remove-button" value="Remove from cart"/>
+                            </form>
+                        </td>
+                    </tr>
+
+                }
+                </table>
+                <div>
+                    <input type="submit" class="remove-button" value="Clear cart"/>
+                </div>
+            } else
+            {
+                <p>Your cart is empty :(</p>
+            }
+</body>
+</html>
