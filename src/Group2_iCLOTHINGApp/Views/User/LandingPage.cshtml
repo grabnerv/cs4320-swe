@@ -39,9 +39,9 @@
             Welcome, @Html.DisplayFor(model => model.customerName)
         </div>
         <div>
-            <a href="@Url.Action("ProductListWindowView", "ProductListWindow")" class="button">Product List</a>
             <a href="@Url.Action("UserQueryForm", "User")" class="button">User Query Page</a>
             <a href="@Url.Action("UserCommentForm", "User")" class="button">User Comment Form</a>
+            <a href="@Url.Action("Index", "ShoppingCartWindow")" class="button">Your Cart</a>
         </div>
         <div>
             <a href="@Url.Action("Logout", "User")" class="button">Log out</a>
@@ -56,6 +56,7 @@
     }
 
     <div>
+        <a href="@Url.Action("ProductListWindowView", "ProductListWindow")" class="button">Product List</a>
         <a href="@Url.Action("AboutUsInformationWindow", "User")" class="button">About Us</a>
     </div>
 </body>

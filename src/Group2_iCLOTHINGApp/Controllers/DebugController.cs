@@ -54,7 +54,9 @@ namespace Group2_iCLOTHINGApp.Controllers
         // GET: Debug
         public ActionResult Index()
         {
-            ShoppingCartAPI.AddToShoppingCart(db, 1, 1, 1);
+            //ShoppingCartAPI.AddToShoppingCart(db, 1, 1, 1);
+
+            ShoppingCartAPI.RemoveFromShoppingCart(db, 1, 1, 1);
 
             return View();
         }
