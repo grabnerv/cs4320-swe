@@ -1,7 +1,121 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "ManageBillingDashboard";
 }
 
-<h2>ManageBillingDashboard</h2>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
+    th, td {
+        padding: 15px;
+        border: 2px solid #808080 text-align: left;
+    }
+
+    th {
+        background-color: #b200ff
+    }
+
+    .button {
+        display: inline-block;
+        padding: 10px 30px;
+        margin: 10px;
+        text-align: center;
+        border: 2px solid #007a33;
+        color: #007a33;
+        border-radius: 4px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .button-hover {
+        background-color: #007a33;
+        color: #fff;
+    }
+</style>
+
+<h2>Admin Dashboard</h2>
+
+<h3>Order List</h3>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+    </tr>
+    @foreach (var order in ViewBag.orders)
+    {
+        <tr>
+            <td>@order.orderID</td>
+            @* there's only one '*@
+            @foreach (var user in order.ShoppingCart.UserAccessLevel)
+            {
+                <td>@user.userName</td>
+            }
+            <td>@order.status</td>
+            <td>@order.statusDate.ToString()</td>
+            <td>@order.ShoppingCart.Product.productName</td>
+            <td>@order.ShoppingCart.cartProductPrice</td>
+            <td>@order.ShoppingCart.cartProductQuantity</td>
+        </tr>
+    }
+</table>
+<br />
+
+<h3>Customer List</h3>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+    </tr>
+    @foreach (var cust in ViewBag.customers)
+    {
+        <tr>
+            <td>@cust.userID</td>
+            <td>@cust.customerName</td>
+            <td>@cust.customerShippingAddress</td>
+        </tr>
+    }
+</table>
+<br />
+
+<h3>Customer Comments</h3>
+<table>
+    <tr>
+        <th>User ID</th>
+        <th>Date</th>
+        <th>Comment</th>
+    </tr>
+    @foreach (var c in ViewBag.comments)
+    {
+        <tr>
+            <td>@c.userID</td>
+            <td>@c.commentDate.ToString()</td>
+            <td>@c.commentDescription</td>
+        </tr>
+    }
+</table>
+<br />
+
+<h3>Customer Queries</h3>
+<table>
+    <tr>
+        <th>User ID</th>
+        <th>Name</th>
+        <th>Query</th>
+    </tr>
+    @foreach (var q in ViewBag.queries)
+    {
+        <tr>
+            <td>@q.userID</td>
+            <td>@q.queryDate.ToString()</td>
+            <td>@q.queryDescription</td>
+        </tr>
+    }
+</table>
+<br />

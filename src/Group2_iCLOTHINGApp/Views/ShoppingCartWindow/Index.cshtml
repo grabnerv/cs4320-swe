@@ -38,6 +38,15 @@
             background-color: #007a33;
             color: #fff;
         }
+
+        .remove-button {
+            padding: 5px 10px;
+            background-color: #007a33;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -50,6 +59,8 @@
                 <th>Product name</th>
                 <th>Brand</th>
                 <th>Quantity</th>
+                <th></th>
+                <th></th>
             </tr>
             @foreach (var item in Model)
             {
@@ -57,11 +68,21 @@
                     <td>@item.p.productName</td>
                     <td>@item.p.Brand.brandName</td>
                     <td>@item.quantity</td>
+                    <td>
+                        <form method="post" action="@Url.Action("RemoveFromCart", "ShoppingCartWindow")">
+                            <input type="hidden" name="productID" value="@item.p.productID" />
+                            <input type="hidden" name="quantity" value="@item.quantity"/>
+                            <input type="submit" class="remove-button" value="Remove from cart" />
+                        </form>
+                    </td>
                 </tr>
             }
         </table>
         <form method="post" action="@Url.Action("Index", "ShoppingCartWindow")">
             <input type="submit" value="Order" />
+        </form>
+        <form method="post" action="@Url.Action("ClearCart", "ShoppingCartWindow")">
+            <input type="submit" value="Clear" />
         </form>
     }
     else

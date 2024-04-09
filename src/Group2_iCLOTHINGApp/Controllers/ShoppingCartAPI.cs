@@ -109,7 +109,7 @@ namespace Group2_iCLOTHINGApp
             var maybeCarts = db.ShoppingCart.SqlQuery("SELECT ShoppingCart.* FROM ShoppingCart, Carts WHERE ShoppingCart.cartID = Carts.cartID AND ShoppingCart.cartProductID = @p0 AND Carts.userID = @p1", productID, userID);
 
             // get the ACTIVE cart for this user + productID combo (if it exists)
-            var maybeCart = maybeCarts.Where(sc => sc.OrderStatus.Count() == 0);
+            var maybeCart = maybeCarts.Where(sc => sc.OrderStatus.Count() == 0).ToList();
 
             if (maybeCart.Count() == 0) { return; }
             var cart = maybeCart.First();
@@ -135,7 +135,7 @@ namespace Group2_iCLOTHINGApp
             var maybeCarts = db.ShoppingCart.SqlQuery("SELECT ShoppingCart.* FROM ShoppingCart, Carts WHERE ShoppingCart.cartID = Carts.cartID AND Carts.userID = @p0", userID);
 
             // filter to ACTIVE carts
-            var maybeFilteredCarts = maybeCarts.Where(sc => sc.OrderStatus.Count() == 0);
+            var maybeFilteredCarts = maybeCarts.Where(sc => sc.OrderStatus.Count() == 0).ToList();
 
             // clear each cart
             foreach (var cart in maybeFilteredCarts)

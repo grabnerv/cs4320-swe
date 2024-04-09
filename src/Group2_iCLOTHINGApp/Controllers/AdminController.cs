@@ -24,6 +24,11 @@ namespace Group2_iCLOTHINGApp.Controllers
             var userID = (int)Session["userID"];
             if (db.UserAccessLevel.Find(userID).userAccess != "ADMIN") { return RedirectToAction("Index", "User"); }
 
+            ViewBag.orders = db.OrderStatus.ToList();
+            ViewBag.customers = db.Customer.ToList();
+            ViewBag.queries = db.UserQuery.ToList();
+            ViewBag.comments = db.UserComments.ToList();
+
             return View();
         }
 

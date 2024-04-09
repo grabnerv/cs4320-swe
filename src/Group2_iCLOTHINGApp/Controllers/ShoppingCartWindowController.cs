@@ -36,5 +36,31 @@ namespace Group2_iCLOTHINGApp.Controllers
             List<CartItem> cartItems = ShoppingCartAPI.GetItemsInCart(db, userID);
             return View(cartItems);
         }
+
+        [HttpPost]
+        public ActionResult RemoveFromCart()
+        {
+            // ensure user logged in
+            if (Session["userID"] == null) { return RedirectToAction("Index", "User"); }
+            int userID = (int)Session["userID"];
+
+            int productID = int.Parse(Request.Form["productID"]);
+            int quantity = int.Parse(Request.Form["quantity"]);
+            ShoppingCartAPI.RemoveFromShoppingCart(db, userID, productID, quantity);
+
+            return RedirectToAction("Index", "ShoppingCartWindow");
+        }
+
+        [HttpPost]
+        public ActionResult ClearCart()
+        {
+            // ensure user logged in
+            if (Session["userID"] == null) { return RedirectToAction("Index", "User"); }
+            int userID = (int)Session["userID"];
+
+            ShoppingCartAPI.ClearCart(db, userID);
+
+            return RedirectToAction("Index", "ShoppingCartWindow");
+        }
     }
 }
