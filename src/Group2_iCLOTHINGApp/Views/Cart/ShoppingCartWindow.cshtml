@@ -39,7 +39,7 @@
             background-color: #007a33;
             color: #fff;
         }
-        .add-button {
+        .remove-button {
             padding: 5px 10px;
             background-color: #007a33;
             color: white;
@@ -58,7 +58,7 @@
                         <th>Product name</th>
                         <th>Brand</th>
                         <th>Quantity</th>
-                        <th>Buy</th>
+                        <th>Remove</th>
                     </tr>
                     @foreach (var item in Model)
                 {
@@ -67,9 +67,9 @@
                         <td>@item.Brand</td>
                         <td>@item.productQuantity</td>
                         <td>
-                            <form method="post" action="@Url.Action("AddToCart", "Cart")">
+                            <form method="post" action="@Url.Action("RemoveFromCart", "Cart")">
                                 <input type="hidden" name="productId" value="item.Product.ProductID"/>
-                                <input type="submit" class="add-button" value="Add to cart"/>
+                                <input type="submit" class="remove-button" value="Remove from cart"/>
                             </form>
                         </td>
                     </tr>
